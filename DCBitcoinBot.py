@@ -12,26 +12,21 @@ def get_bitcoin_price():
     response = requests.get(url).json()
     return response["bitcoin"]["usd"]
 # Set your price limits
-UPPER_LIMIT = 65000  # Alert if price goes above this
-LOWER_LIMIT = 60000  # Alert if price goes below this
+UPPER_LIMIT = 93000  # Alert if price goes above this
+LOWER_LIMIT = 84000  # Alert if price goes below this
 
-def send_message():
-    price = get_bitcoin_price()
-    text = f"Bitcoin Price: ${price}"
-
-    # Check if price crosses the set limits
-    if price >= UPPER_LIMIT:
-        text += "\n🚀 Bitcoin is surging! Above $65,000!"
-    elif price <= LOWER_LIMIT:
-        text += "\n📉 Bitcoin dropped! Below $60,000!"
-
-    # Send message only if price crosses a limit or it's the regular update
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={CHAT_ID}&text={text}"
-    requests.get(url)
 # Function to send a message
 def send_message():
     price = get_bitcoin_price()
-    text = f"Bitcoin Price: ${price}"
+    text = f"Bitcoin Price💲: ${price}💸"
+
+    # Check if price crosses the set limits
+    if price >= UPPER_LIMIT:
+        text += "\n🚀 Bitcoin is surging! Above $93,000!"
+    elif price <= LOWER_LIMIT:
+        text += "\n📉 Bitcoin dropped! Below $84,000!"
+
+    # Send message only if price crosses a limit or it's the regular update
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={CHAT_ID}&text={text}"
     requests.get(url)
 
