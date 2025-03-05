@@ -1,10 +1,11 @@
+import os
 import requests
 import schedule
 import time
 
 # Your bot token and chat ID
-BOT_TOKEN = ""
-CHAT_ID = ""
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
 
 # Function to get Bitcoin price
 def get_bitcoin_price():
@@ -18,7 +19,7 @@ LOWER_LIMIT = 84000  # Alert if price goes below this
 # Function to send a message
 def send_message():
     price = get_bitcoin_price()
-    text = f"Bitcoin Price💲: ${price}💸"
+    text = f"Bitcoin Price💰: ${price}💸"
 
     # Check if price crosses the set limits
     if price >= UPPER_LIMIT:
