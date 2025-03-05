@@ -31,12 +31,4 @@ def send_message():
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={CHAT_ID}&text={text}"
     requests.get(url)
 
-# Schedule the bot to run every 10 minutes
-schedule.every(10).minutes.do(send_message)
-
-send_message()  # Send the first message immediately
-
-# Keep the script running
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+send_message()  # Send the message immediately
