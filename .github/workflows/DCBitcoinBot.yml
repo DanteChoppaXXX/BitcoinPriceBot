@@ -21,8 +21,8 @@ jobs:
     - name: Install dependencies
       run: pip install requests schedule
 
-    - name: Run bot
+    - name: Run DCBitcoinBot
       env:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         CHAT_ID: ${{ secrets.CHAT_ID }}
-      run: python bot.py
+      run: python DCBitcoinBot.py
